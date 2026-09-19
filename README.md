@@ -11,7 +11,8 @@
 ### 🏷️ Tag & Keyword / Topics
 `digital-twin` · `urban-planning` · `smart-city` · `ai-simulator` · `urban-simulation` · `15-minute-city` · `traffic-simulation` · `geojson` · `gis` · `ollama` · `open-source` · `react` · `typescript`
 
-**Keywords:** simulatore urbano AI, digital twin city, open source urban planning, pianificazione mobilità, 15 minute neighborhood, simulazione traffico origine destinazione, import geojson, smart city dashboard.
+**Keywords (IT):** simulatore urbano AI, digital twin city, open source urban planning, pianificazione mobilità quartiere 15 minuti, simulazione traffico origine destinazione, import geojson, smart city dashboard.  
+**Keywords (EN):** AI urban simulator, open-source digital twin, mobility planning, 15-minute city scenarios, origin-destination traffic simulation, GeoJSON boundaries, smart city modeling.
 
 ---
 
@@ -54,24 +55,34 @@ Enable **Maps JavaScript API** and **Geocoding API**, restrict the key to deploy
 
 ## Funzionalità incluse / Included Features
 
-- **Generatore di tre alternative** per qualsiasi obiettivo o richiesta urbana.
-- **Import GIS / GeoJSON**: Caricamento di file `.geojson` con estrazione automatica dei confini e superficie in ettari.
-- **Simulazione traffico origine-destinazione**: Calcolo deterministico tramite distanze su grafo (Manhattan distance) tra abitazioni, scuole, fermate e zone miste.
-- **Integrazione LLM locali & Ollama**: Supporto diretto a endpoint Ollama (`/api/chat`, `/api/generate`) con robusto parser JSON strutturato.
-- **Parametri di costo configurabili**: `SimulationConfig` personalizzabile per adeguarsi a valuta e costi comunali al m²/abitante.
-- **Griglia 2D interattiva** con zone residenziali, parchi, servizi e gerarchia stradale primaria/locale.
-- **Metriche e indicatori**: stime leggibili di traffico, costo, verde per abitante, posti auto e accessibilità.
-- **Confronto e fasi**: comparazione rapida tra scenari e proposta di cronoprogramma a fasi.
-- **Export dei dati**: esportazione dello scenario attivo in JSON e standard GeoJSON.
-- **Bilingue & responsive**: interfaccia italiano/English, tema accessibile, funzionamento statico e deploy immediato.
+- **Generatore di tre alternative** per qualsiasi obiettivo o richiesta urbana.  
+  *Three-alternative generator for any urban objective or design brief.*
+- **Import GIS / GeoJSON**: Caricamento file `.geojson` con estrazione automatica dei confini e calcolo della superficie in ettari.  
+  *GIS / GeoJSON import: Upload `.geojson` files with automated boundary and hectare area calculation.*
+- **Simulazione traffico origine-destinazione**: Calcolo deterministico tramite distanze su grafo (distanza Manhattan) tra abitazioni, scuole, fermate e zone miste.  
+  *Origin-destination traffic simulation: Deterministic graph distance calculation (Manhattan distance) between homes, schools, transit stops, and mixed-use zones.*
+- **Integrazione LLM locali & Ollama**: Supporto nativo a endpoint Ollama (`/api/chat`, `/api/generate`) con prompt strutturato e tollerante.  
+  *Local LLM & Ollama integration: Direct support for Ollama endpoints (`/api/chat`, `/api/generate`) with structured, fault-tolerant JSON prompt engineering.*
+- **Parametri di costo configurabili**: `SimulationConfig` personalizzabile per adeguarsi a valuta e costi comunali al m²/abitante.  
+  *Configurable cost parameters: Customizable `SimulationConfig` to calibrate per-resident/hectare local municipal costs and currency.*
+- **Griglia 2D interattiva** con zone residenziali, parchi, servizi e gerarchia stradale primaria/locale.  
+  *Interactive 2D grid showing residential blocks, parks, amenities, and primary/local street networks.*
+- **Metriche e indicatori**: stime leggibili di traffico, costo, verde per abitante, posti auto e accessibilità.  
+  *Readable metrics and indicators: clear estimates of traffic, investment cost, green space per capita, parking, and service access.*
+- **Confronto e fasi**: comparazione rapida tra scenari e proposta di cronoprogramma a fasi.  
+  *Scenario comparison & phasing: side-by-side alternative comparison and step-by-step rollout schedule.*
+- **Export dei dati**: esportazione dello scenario attivo in JSON e standard GeoJSON.  
+  *Data export: download the active design in CityMirror JSON and standardized GeoJSON format.*
+- **Bilingue & responsive**: interfaccia italiano/English, tema accessibile, funzionamento statico e deploy immediato.  
+  *Bilingual & responsive: Italian/English UI, accessible theme, fully static execution, and effortless deployment.*
 
 ## Architettura / Architecture
 
 ```text
 Browser (React + TypeScript)
- ├─ GIS parser: GeoJSON → calcolo bounding box + ettari
- ├─ Urban engine: brief → simulazione grafo OD → 3 scenari + indicatori + GeoJSON
- ├─ Local AI adapter (Ollama / endpoint custom): prompt vincolato → fallback locale
+ ├─ GIS parser: GeoJSON → calcolo bounding box + ettari / bounding box + hectare calculation
+ ├─ Urban engine: brief → simulazione grafo OD / OD graph simulation → 3 scenari + indicatori + GeoJSON
+ ├─ Local AI adapter (Ollama / endpoint custom): prompt vincolato → fallback locale / constrained prompt → local fallback
  ├─ Optional Google Maps adapter: city geocoding + contextual map
  └─ Export: CityMirror JSON / GeoJSON (generated design only)
 ```
@@ -88,12 +99,12 @@ As a static SPA, `npm run build` creates `dist/`, suitable for GitHub Pages, Net
 
 ## Roadmap / Roadmap
 
-- [x] **Import GIS pubblico (GeoJSON)**: calcolo confini reali e superficie del lotto.
-- [x] **Simulazione a grafo con origine-destinazione**: calcolo percorsi e penalità di traffico.
-- [x] **Collegamento a modello AI open source via Ollama** con estrazione JSON tollerante.
-- [x] **Calibratura parametri e costi locali** (`SimulationConfig`).
-- [ ] Integrazione OpenStreetMap / Overpass API diretta per estrazione automatica geometrie urbane.
-- [ ] Modelli di trasporto pubblico avanzati (isocrone pedonali e ciclabili).
+- [x] **Import GIS pubblico (GeoJSON)**: calcolo confini reali e superficie del lotto. / **Public GIS import (GeoJSON)**: real site boundaries and hectare area calculation.
+- [x] **Simulazione a grafo con origine-destinazione**: calcolo percorsi e penalità di traffico. / **Graph-based origin-destination simulation**: route distance and traffic penalty modeling.
+- [x] **Collegamento a modello AI open source via Ollama** con estrazione JSON tollerante. / **Open-source AI connection via Ollama** with robust JSON fallback extraction.
+- [x] **Calibratura parametri e costi locali** (`SimulationConfig`). / **Local parameters and cost calibration** (`SimulationConfig`).
+- [ ] **Integrazione OpenStreetMap / Overpass API diretta** per estrazione automatica geometrie urbane. / **Direct OpenStreetMap / Overpass API integration** for automated urban geometry extraction.
+- [ ] **Modelli di trasporto pubblico avanzati** (isocrone pedonali e ciclabili). / **Advanced transit modeling** (walkable and cycling isochrone contours).
 
 ## Licenza e attribuzioni / License and attribution
 

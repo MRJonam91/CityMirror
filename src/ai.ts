@@ -47,7 +47,9 @@ export async function requestAiScenarios(brief: UrbanBrief, language: Language):
 
   const isOllama = endpoint.includes('/api/chat') || endpoint.includes('/api/generate')
   
-  const userPrompt = `Language: ${language}. Brief: City: ${brief.city}, Population: ${brief.population}, Area: ${brief.areaHa} ha, Priorities: ${brief.priorities.join(', ')}.`
+  const targetLanguage = language === 'it' ? 'Italian' : 'English'
+  const userPrompt = `Target language: ${targetLanguage}. All scenario titles, subtitles, narratives, tradeoffs, phases, and indicator labels MUST be strictly written in ${targetLanguage}.
+Brief: City: ${brief.city}, Population: ${brief.population}, Area: ${brief.areaHa} ha, Priorities: ${brief.priorities.join(', ')}.`
 
   const requestBody: Record<string, unknown> = isOllama
     ? {
